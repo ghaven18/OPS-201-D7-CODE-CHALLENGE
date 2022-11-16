@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Script: lshw                     
+# Author: Gregory Haven                 
+# Date of latest revision: 11/15/2022
+# Purpose: help me get better at coding             
+
+# Declaration of variables
+
+# Main
+# Search the output of lshw command and returns every line with the word bridge in it
+# lshw | grep “bridge” 
+echo "CPU"
+lshw | grep "cpu" -A 9 | head -9
+echo "memory"
+lshw | grep "memory" -A 4 | head -4
+echo "DISPLAY ADAPTER"
+lshw | grep "display" -A 12 |head -12
+lshw | grep "network" -A 9 | head -9
