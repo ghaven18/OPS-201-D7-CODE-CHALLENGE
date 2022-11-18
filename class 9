@@ -1,0 +1,55 @@
+PS C:\Users\ghave> PS C:\Users\ghave> $Begin = Get-Date -Date '11/16/2022 08:00:00'
+$End = Get-Date -Date '11/17/2022 08:00:00'
+Get-EventLog -LogName System -EntryType Error -After $Begin -Before $End
+Get-Process : A positional parameter cannot be found that accepts argument '$null'.
+At line:1 char:1
++ PS C:\Users\ghave> $Begin = Get-Date -Date '11/16/2022 08:00:00'
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-Process], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.GetProcessCommand
+ 
+Get-EventLog : Cannot validate argument on parameter 'After'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command 
+again.
+At line:3 char:54
++ Get-EventLog -LogName System -EntryType Error -After $Begin -Before $ ...
++                                                      ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-EventLog], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetEventLogCommand
+ 
+
+PS C:\Users\ghave> Get-EventLog -LogName System -EntryType Error >C:\Users\ghave\OneDrive\Desktop\error.txt
+
+PS C:\Users\ghave> Get-EventLog -LogName System -EntryType Error >C:\Users\ghave\OneDrive\Desktop\error.txt
+
+PS C:\Users\ghave> $Begin = Get-Date -Date '11/16/2022 08:00:00'
+$End = Get-Date -Date '11/17/2022 08:00:00'
+Get-EventLog -LogName System -EntryType Error -After $Begin -Before $End
+
+   Index Time          EntryType   Source                 InstanceID Message                                                                                             
+   ----- ----          ---------   ------                 ---------- -------                                                                                             
+  482513 Nov 16 10:59  Error       Service Control M...   3221232503 The NVIDIA LocalSystem Container service terminated unexpectedly.  It has done this 1 time(s).  T...
+  482512 Nov 16 10:59  Error       Service Control M...   3221232495 The NVIDIA LocalSystem Container service terminated with the following error: ...                   
+
+
+
+PS C:\Users\ghave> $Events = Get-EventLog -LogName System -Newest 500
+$Events | Group-Object -Property Source -NoElement | Sort-Object -Property Count -Descending
+
+Count Name                     
+----- ----                     
+  277 DCOM                     
+   81 Netwtw10                 
+   61 disk                     
+   34 Microsoft-Windows-Kern
+    8 Microsoft-Windows-Kern
+    6 Microsoft-Windows-Wind
+    5 Microsoft-Windows-Powe
+    5 Microsoft-Windows-Kern
+    4 Microsoft-Windows-Ntfs   
+    4 Microsoft-Windows-DNS-
+    4 Service Control Manager  
+    3 BROWSER                  
+    3 UASPStor                 
+    2 EventLog                 
+    2 Microsoft-Windows-UserPnp
+    1 Microsoft-Windows-Filt
