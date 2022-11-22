@@ -1,0 +1,7 @@
+netsh advfirewall firewall set rule group
+ Configure-SMremoting.exe -enable
+ Remove-AppxPackage
+ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+ sudo modprobe cifs
+cat /sys/module/cifs/parameters/disable_legacy_dialects
+https://learn.microsoft.com/en-us/azure/storage/files/files-remove-smb1-linux
